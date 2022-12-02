@@ -3,10 +3,10 @@ from bs4 import BeautifulSoup
 from collections import Counter
 import statistics as stats
 import string
-
-
 import operator
 import matplotlib.pyplot as plt; plt.rcdefaults()
+
+
 class TextAnalyzer:
     def __init__(self, src, src_type='discover'):
         """Keyword arguments:
@@ -27,7 +27,6 @@ class TextAnalyzer:
     def set_values(self):
         if self._src.endswith('.txt'):
             self._src_type = 'path'
-            #self._content = self._orig_content=self.read_file(self._src)
             self._content = self._orig_content()
 
         elif self._src.startswith('http'):
@@ -36,6 +35,7 @@ class TextAnalyzer:
             res = r.content
             self._orig_content = r.text
             self._content = res
+        
         else:
             self._src_type = 'text'
             self._orig_content = self._src
